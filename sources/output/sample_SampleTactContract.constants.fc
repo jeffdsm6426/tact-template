@@ -1,2 +1,17 @@
+;; Comment "Add"
+cell __gen_cell_comment_10afebcfc3fc2db72c41c6d873a6960471b5941d6ed47dffc695eace74dd6f67() asm "B{b5ee9c7241010101000900000e00000000416464b1f54024} B>boc PUSHREF";
+
+;; Comment "Minus"
+cell __gen_cell_comment_e0b47d66c0138e5576b134c4c9c991feb8e4dde5dd4ca4706948540344e55c1b() asm "B{b5ee9c7241010101000b000012000000004d696e757338cbf194} B>boc PUSHREF";
+
+;; Comment "Multiply"
+cell __gen_cell_comment_a7853e25077d1458d4b45adcff18b80eb19790d61b9dd5600e75621daf0bdaec() asm "B{b5ee9c7241010101000e000018000000004d756c7469706c79ec36c78b} B>boc PUSHREF";
+
+;; Comment "Divide"
+cell __gen_cell_comment_83a16d0c90e3ef114c2de6e947b687d03873521fd8fe5b40cac17d3c28025cce() asm "B{b5ee9c7241010101000c00001400000000446976696465603d9f6b} B>boc PUSHREF";
+
 ;; Comment "incremented"
 cell __gen_cell_comment_3e96a74bf6f672d7e00d5d9c31c1437327e624b173365dc10e024c6410eff184() asm "B{b5ee9c7241010101001100001e00000000696e6372656d656e7465648430bf20} B>boc PUSHREF";
+
+;; Comment "decremented"
+cell __gen_cell_comment_cef66999b58b98d2927b2b02a3a10ae193d666854757897dd911aeabf5224c09() asm "B{b5ee9c7241010101001100001e0000000064656372656d656e7465647f812353} B>boc PUSHREF";

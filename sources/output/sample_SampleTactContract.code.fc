@@ -26,9 +26,39 @@
     return (($self'owner, $self'counter), ());
 }
 
+((slice, int), ()) $SampleTactContract$_fun_minus((slice, int) $self, int $v) impure inline_ref {
+    var (($self'owner, $self'counter)) = $self;
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    throw_unless(4429, ( __tact_slice_eq_bits($self'owner, $ctx'sender) ));
+    $self'counter = ($self'counter - $v);
+    return (($self'owner, $self'counter), ());
+}
+
+((slice, int), ()) $SampleTactContract$_fun_multiply((slice, int) $self, int $v) impure inline_ref {
+    var (($self'owner, $self'counter)) = $self;
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    throw_unless(4429, ( __tact_slice_eq_bits($self'owner, $ctx'sender) ));
+    $self'counter = ($self'counter * $v);
+    return (($self'owner, $self'counter), ());
+}
+
+((slice, int), ()) $SampleTactContract$_fun_divide((slice, int) $self, int $v) impure inline_ref {
+    var (($self'owner, $self'counter)) = $self;
+    var ($ctx'bounced, $ctx'sender, $ctx'value, $ctx'raw) = __tact_context_get();
+    throw_unless(4429, ( __tact_slice_eq_bits($self'owner, $ctx'sender) ));
+    throw_unless(7622, ($v != 0));
+    $self'counter = ($self'counter / $v);
+    return (($self'owner, $self'counter), ());
+}
+
 ((slice, int), int) $SampleTactContract$_fun_counter((slice, int) $self) impure inline_ref {
     var (($self'owner, $self'counter)) = $self;
     return (($self'owner, $self'counter), $self'counter);
+}
+
+((slice, int), slice) $SampleTactContract$_fun_owner((slice, int) $self) impure inline_ref {
+    var (($self'owner, $self'counter)) = $self;
+    return (($self'owner, $self'counter), $self'owner);
 }
 
 ;;
@@ -39,6 +69,31 @@
     var ($self'owner, $self'counter) = $self;
     var ($msg'amount) = $msg;
     ($self'owner, $self'counter)~$SampleTactContract$_fun_add($msg'amount);
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_reply(__gen_cell_comment_10afebcfc3fc2db72c41c6d873a6960471b5941d6ed47dffc695eace74dd6f67());
+    return (($self'owner, $self'counter), ());
+}
+
+(((slice, int)), ()) $SampleTactContract$_internal_binary_Minus((slice, int) $self, (int) $msg) impure inline {
+    var ($self'owner, $self'counter) = $self;
+    var ($msg'amount) = $msg;
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_minus($msg'amount);
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_reply(__gen_cell_comment_e0b47d66c0138e5576b134c4c9c991feb8e4dde5dd4ca4706948540344e55c1b());
+    return (($self'owner, $self'counter), ());
+}
+
+(((slice, int)), ()) $SampleTactContract$_internal_binary_Multiply((slice, int) $self, (int) $msg) impure inline {
+    var ($self'owner, $self'counter) = $self;
+    var ($msg'amount) = $msg;
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_multiply($msg'amount);
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_reply(__gen_cell_comment_a7853e25077d1458d4b45adcff18b80eb19790d61b9dd5600e75621daf0bdaec());
+    return (($self'owner, $self'counter), ());
+}
+
+(((slice, int)), ()) $SampleTactContract$_internal_binary_Divide((slice, int) $self, (int) $msg) impure inline {
+    var ($self'owner, $self'counter) = $self;
+    var ($msg'amount) = $msg;
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_divide($msg'amount);
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_reply(__gen_cell_comment_83a16d0c90e3ef114c2de6e947b687d03873521fd8fe5b40cac17d3c28025cce());
     return (($self'owner, $self'counter), ());
 }
 
@@ -46,6 +101,13 @@
     var ($self'owner, $self'counter) = $self;
     ($self'owner, $self'counter)~$SampleTactContract$_fun_add(1);
     ($self'owner, $self'counter)~$SampleTactContract$_fun_reply(__gen_cell_comment_3e96a74bf6f672d7e00d5d9c31c1437327e624b173365dc10e024c6410eff184());
+    return (($self'owner, $self'counter), ());
+}
+
+((slice, int), ()) $SampleTactContract$_internal_text_85915b1bf5943fd2853bb660338acacfae39d1f735549cef922255a9945acc3e((slice, int) $self) impure inline {
+    var ($self'owner, $self'counter) = $self;
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_minus(1);
+    ($self'owner, $self'counter)~$SampleTactContract$_fun_reply(__gen_cell_comment_cef66999b58b98d2927b2b02a3a10ae193d666854757897dd911aeabf5224c09());
     return (($self'owner, $self'counter), ());
 }
 
@@ -66,6 +128,12 @@ _ %counter() method_id(104984) {
     return res;
 }
 
+_ %owner() method_id(83229) {
+    var self = $SampleTactContract$_contract_load();
+    var res = self~$SampleTactContract$_fun_owner();
+    return res;
+}
+
 _ supported_interfaces() method_id {
     return (
         "org.ton.introspection.v0"H >> 128,
@@ -76,7 +144,7 @@ _ supported_interfaces() method_id {
 }
 
 _ get_abi_ipfs() method_id {
-    return "ipfs://QmYzQHN2n6D1zEBuJyBnJrnmhQWzgZWhaNppmwsAFW4kNi";
+    return "ipfs://Qma8fi9jN5wQ9DT8tmcpuxQjGK6PdiQDqBRE2eeCqzGcVN";
 }
 
 _ lazy_deployment_completed() method_id {
@@ -107,6 +175,27 @@ _ lazy_deployment_completed() method_id {
         return (self, true);
     }
     
+    ;; Receive Minus message
+    if (op == 2759561417) {
+        var msg = in_msg~$Minus$_load();
+        self~$SampleTactContract$_internal_binary_Minus(msg);
+        return (self, true);
+    }
+    
+    ;; Receive Multiply message
+    if (op == 2185829316) {
+        var msg = in_msg~$Multiply$_load();
+        self~$SampleTactContract$_internal_binary_Multiply(msg);
+        return (self, true);
+    }
+    
+    ;; Receive Divide message
+    if (op == 2091152479) {
+        var msg = in_msg~$Divide$_load();
+        self~$SampleTactContract$_internal_binary_Divide(msg);
+        return (self, true);
+    }
+    
     ;; Receive Deploy message
     if (op == 2490013878) {
         var msg = in_msg~$Deploy$_load();
@@ -121,6 +210,12 @@ _ lazy_deployment_completed() method_id {
         ;; Receive "increment" message
         if (text_op == 0xc4f8d72312edfdef5b7bec7833bdbb162d1511bd78a912aed0f2637af65572ae) {
             self~$SampleTactContract$_internal_text_c4f8d72312edfdef5b7bec7833bdbb162d1511bd78a912aed0f2637af65572ae();
+            return (self, true);
+        }
+        
+        ;; Receive "decrement" message
+        if (text_op == 0x85915b1bf5943fd2853bb660338acacfae39d1f735549cef922255a9945acc3e) {
+            self~$SampleTactContract$_internal_text_85915b1bf5943fd2853bb660338acacfae39d1f735549cef922255a9945acc3e();
             return (self, true);
         }
     }

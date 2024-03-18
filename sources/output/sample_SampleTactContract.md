@@ -1,9 +1,9 @@
 # TACT Compilation Report
 Contract: SampleTactContract
-BOC Size: 849 bytes
+BOC Size: 1213 bytes
 
 # Types
-Total Types: 7
+Total Types: 10
 
 ## StateInit
 TLB: `_ code:^cell data:^cell = StateInit`
@@ -33,10 +33,24 @@ Signature: `FactoryDeploy{queryId:uint64,cashback:address}`
 TLB: `add#87d43ac2 amount:uint32 = Add`
 Signature: `Add{amount:uint32}`
 
+## Minus
+TLB: `minus#a47b90c9 amount:uint32 = Minus`
+Signature: `Minus{amount:uint32}`
+
+## Multiply
+TLB: `multiply#82491bc4 amount:uint32 = Multiply`
+Signature: `Multiply{amount:uint32}`
+
+## Divide
+TLB: `divide#7ca4745f amount:uint32 = Divide`
+Signature: `Divide{amount:uint32}`
+
 # Get Methods
-Total Get Methods: 1
+Total Get Methods: 2
 
 ## counter
+
+## owner
 
 # Error Codes
 2: Stack undeflow
@@ -64,3 +78,4 @@ Total Get Methods: 1
 136: Invalid address
 137: Masterchain support is not enabled for this contract
 4429: Invalid sender
+7622: The divisor cannot be 0

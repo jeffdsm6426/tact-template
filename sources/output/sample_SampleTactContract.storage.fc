@@ -64,6 +64,42 @@ cell $DeployOk$_store_cell((int) v) inline {
 }
 
 ;;
+;; Type: Minus
+;; Header: 0xa47b90c9
+;; TLB: minus#a47b90c9 amount:uint32 = Minus
+;;
+
+(slice, ((int))) $Minus$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2759561417);
+    var v'amount = sc_0~load_uint(32);
+    return (sc_0, (v'amount));
+}
+
+;;
+;; Type: Multiply
+;; Header: 0x82491bc4
+;; TLB: multiply#82491bc4 amount:uint32 = Multiply
+;;
+
+(slice, ((int))) $Multiply$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2185829316);
+    var v'amount = sc_0~load_uint(32);
+    return (sc_0, (v'amount));
+}
+
+;;
+;; Type: Divide
+;; Header: 0x7ca4745f
+;; TLB: divide#7ca4745f amount:uint32 = Divide
+;;
+
+(slice, ((int))) $Divide$_load(slice sc_0) inline {
+    throw_unless(129, sc_0~load_uint(32) == 2091152479);
+    var v'amount = sc_0~load_uint(32);
+    return (sc_0, (v'amount));
+}
+
+;;
 ;; Type: SampleTactContract
 ;;
 

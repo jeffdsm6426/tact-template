@@ -1,6 +1,7 @@
 import * as fs from "fs";
 import * as path from "path";
-import { Address, contractAddress, TonClient4 } from "ton";
+import { Address, contractAddress } from "@ton/core";
+import {TonClient4} from "@ton/ton";
 import { SampleTactContract } from "./output/sample_SampleTactContract";
 import { prepareTactDeployment } from "@tact-lang/deployer";
 
@@ -12,7 +13,7 @@ import { prepareTactDeployment } from "@tact-lang/deployer";
     // Parameters
     let testnet = true;
     let packageName = "sample_SampleTactContract.pkg";
-    let owner = Address.parse("kQBM7QssP28PhrctDOyd47_zpFfDiQvv5V9iXizNopb1d2LB");
+    let owner = Address.parse("0QDojPyVulj6TcWvEd3E3-DLIyXbfRrU15-70xM0lVnqgzPO");
     let init = await SampleTactContract.init(owner);
     let contract_address = contractAddress(0, init);
 
@@ -24,4 +25,6 @@ import { prepareTactDeployment } from "@tact-lang/deployer";
     let contract = await SampleTactContract.fromAddress(contract_address);
     let contract_open = await client.open(contract);
     console.log("Counter Value: " + (await contract_open.getCounter()));
+    console.log("Owner Address: " + (await contract_open.getOwner()));
+
 })();
